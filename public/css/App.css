@@ -1,0 +1,36 @@
+@import url("/css/Init.css");
+header
+{
+    position: sticky;
+    top:0;
+    left:0;
+    right: 0;
+    height: min(80px,10vh);
+    box-shadow: -1px -1px 10px gray;
+}
+
+.logo
+{
+    height: 100%;
+    padding: min(10px,2%);
+    width:max-content;
+    overflow: hidden;
+    /* border-radius:50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo > img
+{
+    border-radius: 50%;
+}
+
+main
+{
+
+}
+
+footer
+{
+
+}
