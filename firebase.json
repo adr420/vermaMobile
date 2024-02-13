@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site":"vermamobiles",
     "public": "public",
     "ignore": [
       "firebase.json",
