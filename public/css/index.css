@@ -1,0 +1,67 @@
+@import url("/css/Init.css");
+@import url("/css/header.css");
+
+.panel
+{
+    padding:20px 0;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.panel > button
+{
+    font-size:1.2rem;
+    background: transparent;
+    border:none;
+    width:100%;
+
+}
+
+.panel > button:hover
+{
+    color:blue;
+    cursor:pointer;
+   
+}
+
+#repairs
+{
+    outline: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.repair
+{
+    outline: 1px solid blue;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size:1.3rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.repair > .check
+{
+    width:2rem;
+    height:2rem;
+    accent-color: blue;
+}
+
+.repair > .del-btn
+{
+    width:2rem;
+    height:2rem;
+}
+
+#contact
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:1.1rem;
+    text-align: center;
+    padding: 10px 0;
+    background: #f0f0f0;
+}
