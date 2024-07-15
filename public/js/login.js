@@ -9,7 +9,6 @@ submitBtn.onclick = async(e) => {
     if (res)
     {
         localStorage.setItem("vermaMobKey",key);
-        console.log("login success");
         setTimeout(()=>{
             location.replace("index.html");
         },600);
