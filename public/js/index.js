@@ -16,7 +16,7 @@ async function RepairView({ id, done }) {
     doneBox.disabled = !(await App.signup(localStorage.getItem("vermaMobKey")));
     doneBox.classList.add("check");
     doneBox.onclick = async (e) => {
-        await App.change_repair_status(localStorage.getItem("vermaMobKey"),id,doneBox.checked);
+        await App.change_repair_status(localStorage.getItem("vermaMobKey"), id, doneBox.checked);
     }
 
 
@@ -24,8 +24,8 @@ async function RepairView({ id, done }) {
     delBtn.classList.add("del-btn");
     delBtn.textContent = "Del";
     delBtn.onclick = async (e) => {
-        await App.delete_repair(localStorage.getItem("vermaMobKey"),id);
-        refresh_repairs();
+        await App.delete_repair(localStorage.getItem("vermaMobKey"), id);
+        await render_repairs();
     }
 
     repair.appendChild(doneBox);
@@ -33,34 +33,39 @@ async function RepairView({ id, done }) {
     repairsViewElem.appendChild(repair);
 }
 
+let render_pending = false;
 async function render_repairs() {
     const rep_snapshot = await App.get_all_repairs();
+    if (repairsViewElem.innerHTML == "" && rep_snapshot > 1) render_pending = false;
 
+    if (render_pending)
+        return;
+    render_pending = true;
+    repairsViewElem.innerHTML = "";
+
+    let i = 0;
     rep_snapshot.forEach(async (value) => {
         if (value.id == "count") return;
         await RepairView({ id: value.id, done: value.data().done });
-    });
-}
 
-function refresh_repairs()
-{
-    repairsViewElem.innerHTML = "";
-    render_repairs();
+        if (i == rep_snapshot.size - 2)
+            render_pending = false; // async rendering done
+        i++;
+    });
 }
 
 function init() {
     render_repairs();
     delete_done_btn.onclick = async (e) => {
         await App.delete_done_repairs(localStorage.getItem("vermaMobKey"));
-        repairsViewElem.innerHTML = "";
         await render_repairs();
     }
     new_repair_btn.onclick = async (e) => {
         await App.add_repair(localStorage.getItem("vermaMobKey"));
-        refresh_repairs();
+        await render_repairs();
     }
-    refresh_btn.onclick = (e) => {
-        refresh_repairs();
+    refresh_btn.onclick = async (e) => {
+        await render_repairs();
     }
 }
 

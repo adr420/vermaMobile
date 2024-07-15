@@ -7,7 +7,7 @@
     display:flex;
     align-items: center;
     justify-content: space-around;
-
+    background-color: aliceblue;
 }
 
 .panel > button

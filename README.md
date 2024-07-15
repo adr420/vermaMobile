@@ -6,6 +6,5 @@ npm run build
 npm run watch
 ```
 
-firebase site:
-https://vermamobiles.web.app
+A simple web app using firebase firestore.
 
