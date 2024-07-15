@@ -6,5 +6,5 @@ npm run build
 npm run watch
 ```
 
-A simple web app using firebase firestore.
-
+A simple demo web app using firebase firestore.
+Its not nice security wise at all;
